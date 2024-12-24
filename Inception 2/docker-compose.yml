@@ -1,0 +1,40 @@
+services :
+  nginx :
+    image : layer
+    build : nginxFolder
+    ports :
+      - "8080:443"
+    depends_on :
+      - wordpress
+    volumes:
+      - wordpress_data:/var/www
+
+  wordpress :
+    image : press 
+    volumes: 
+      - wordpress_data:/var/www
+    build : wordpressFolder
+volumes:
+    wordpress_data:
+      
+# version: Specifies the Docker Compose file format version.
+# services: Defines the containers (services) of the application.
+# image: The Docker image to use for the container.
+# build: Defines the build context for creating a custom image.
+# environment: Defines environment variables for a container.
+# ports: Maps container ports to host machine ports.
+# volumes: Defines persistent storage volumes.
+# networks: Configures the networks for container communication.
+# depends_on: Specifies dependencies between services.
+# restart: Configures the container's restart behavior.
+# extra_hosts: Adds custom entries to the container's /etc/hosts file.
+# healthcheck: Configures a health check for a service container.
+# logging: Configures the logging driver for a service container.
+# deploy: Specifies deployment configurations (mostly for Docker Swarm).
+# labels: Adds metadata to the container in key-value pairs.
+# user: Specifies the user to run the container as.
+# network_mode: Configures the network mode for the container.
+# container_name: Specifies the container's name.
+# cpus: Limits the number of CPUs available to the container.
+# mem_limit: Specifies the memory limit for the container.
+# ulimits: Configures user resource limits for the container.
