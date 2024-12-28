@@ -1,6 +1,13 @@
 services :
+  wordpress :
+    image : wordpress 
+    volumes: 
+      - wordpress_data:/var/www
+    build : wordpressFolder
+    networks :
+      - my_custom_network 
   nginx :
-    image : layer
+    image : nginx
     build : nginxFolder
     ports :
       - "8080:443"
@@ -8,15 +15,15 @@ services :
       - wordpress
     volumes:
       - wordpress_data:/var/www
-
-  wordpress :
-    image : press 
-    volumes: 
-      - wordpress_data:/var/www
-    build : wordpressFolder
+    networks :
+      - my_custom_network
 volumes:
     wordpress_data:
-      
+
+networks:
+  my_custom_network:
+    driver: bridge
+ 
 # version: Specifies the Docker Compose file format version.
 # services: Defines the containers (services) of the application.
 # image: The Docker image to use for the container.
