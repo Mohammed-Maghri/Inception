@@ -1,11 +1,19 @@
 services :
+  maria_db:
+    image : mariadbdef
+    build  : mariadbFolder
+    environment :
+      DATA_BASE_NAME: ${DATA_BASE_NAME}
+      DATA_BASE_USER: ${DATA_BASE_USER}
+      DATA_BASE_PASS: ${DATA_BASE_PASS}
   wordpress :
+    depends_on:
+      - maria_db
     image : wordpress 
     volumes: 
       - wordpress_data:/var/www
     build : wordpressFolder
-    networks :
-      - my_custom_network 
+  # Add the Network !
   nginx :
     image : nginx
     build : nginxFolder
@@ -15,14 +23,9 @@ services :
       - wordpress
     volumes:
       - wordpress_data:/var/www
-    networks :
-      - my_custom_network
 volumes:
     wordpress_data:
 
-networks:
-  my_custom_network:
-    driver: bridge
  
 # version: Specifies the Docker Compose file format version.
 # services: Defines the containers (services) of the application.
