@@ -2,11 +2,12 @@ services :
   maria_db:
     image : mariadbdef
     build  : mariadbFolder
+    restart: always
     environment :
       DATA_BASE_NAME: ${DATA_BASE_NAME}
       DATA_BASE_USER: ${DATA_BASE_USER}
       DATA_BASE_PASS: ${DATA_BASE_PASS}
-  wordpress :
+  wordpress :   
     depends_on:
       - maria_db
     image : wordpress 
