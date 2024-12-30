@@ -2,34 +2,42 @@ services :
   maria_db:
     image : mariadbdef
     build  : mariadbFolder
+    container_name: mariadb
     restart: always
     environment :
       DATA_BASE_NAME: ${DATA_BASE_NAME}
       DATA_BASE_USER: ${DATA_BASE_USER}
       DATA_BASE_PASS: ${DATA_BASE_PASS}
+
+
   wordpress :
+    image : wordpress 
+    container_name: wordpress
     depends_on:
       - maria_db
-    image : wordpress 
     volumes: 
-      - wordpress_data:/var/www
+      - wordpressda:/var/www
     environment :
-      DATA_BASE_NAME: ${DATA_BASE_NAME}
-      DATA_BASE_USER: ${DATA_BASE_USER}
-      DATA_BASE_PASS: ${DATA_BASE_PASS}
+      DATA_BASE_NAME    : ${DATA_BASE_NAME}
+      DATA_BASE_USER    : ${DATA_BASE_USER}
+      DATA_BASE_PASS    : ${DATA_BASE_PASS}
+      WORDPRESS_DB_HOST : maria_db:3306
     build : wordpressFolder
+
+
   # Add the Network !
   nginx :
     image : nginx
     build : nginxFolder
+    container_name: nginx
     ports :
       - "8080:443"
     depends_on :
       - wordpress
     volumes:
-      - wordpress_data:/var/www
+      - wordpressda:/var/www
 volumes:
-    wordpress_data:
+    wordpressda:
 
  
 # version: Specifies the Docker Compose file format version.
