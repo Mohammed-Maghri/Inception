@@ -14,5 +14,7 @@ COPY www.conf /etc/php/7.4/fpm/pool.d
 COPY wp-config.php /tmp
 RUN  mkdir /run/php
 EXPOSE 9000
-
+COPY   script.sh /tmp
+RUN    chmod +x /tmp/script.sh
+CMD    ["sh" ,"/tmp/script.sh"]
 #root@997da82254c8:/var/www# wp core install --url=maghri.42.fr --title="CBUM" --admin_user=maghri --admin_password=123 --admin_email=maghri@maghri42.fr --allow-root
