@@ -1,7 +1,5 @@
 #!/bin/bash
 
-mv /tmp/wp-config.php /var/www
-
 service mariadb start
 
 mariadb -e "CREATE DATABASE $DATA_BASE_NAME" 

@@ -6,7 +6,7 @@ RUN  sudo apt install php-mysqli
 RUN  mkdir -p /var/www
 RUN  chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp 
 RUN  sudo chown -R www-data:www-data /var/www
-RUN  cd /var/www && sudo -u www-data wp core download --path=/var/www 
+RUN  cd /var/www && sudo -u www-data wp core download --path=/var/www
 # --skip-content --force
 RUN  apt-get install -y php-fpm php-cli 
 RUN  apt-get install systemctl -y

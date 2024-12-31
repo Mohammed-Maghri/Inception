@@ -4,6 +4,8 @@ services :
     build  : mariadbFolder
     container_name: mariadb
     restart: always
+    networks:
+      - my_network
     environment :
       DATA_BASE_NAME: ${DATA_BASE_NAME}
       DATA_BASE_USER: ${DATA_BASE_USER}
@@ -15,6 +17,10 @@ services :
     container_name: wordpress
     depends_on:
       - maria_db
+    # entrypoint: ["dockerize", "-wait", "tcp://maria_db:3306", "-timeout", "60s"]
+    restart: always
+    networks:
+      - my_network
     volumes: 
       - wordpressda:/var/www
     environment :
@@ -26,19 +32,25 @@ services :
 
 
   # Add the Network !
-  nginx :
-    image : nginx
-    build : nginxFolder
+  nginx    :
+    image  : nginx
+    build  : nginxFolder
     container_name: nginx
+    restart : always
+    networks:
+      - my_network
     ports :
-      - "8080:443"
+      - "443:443"
+      # - "8080:80"
     depends_on :
       - wordpress
     volumes:
       - wordpressda:/var/www
 volumes:
     wordpressda:
-
+networks:
+  my_network:
+    driver: bridge
  
 # version: Specifies the Docker Compose file format version.
 # services: Defines the containers (services) of the application.
