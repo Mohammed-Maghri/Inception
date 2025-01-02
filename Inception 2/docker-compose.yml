@@ -10,14 +10,18 @@ services :
       DATA_BASE_NAME: ${DATA_BASE_NAME}
       DATA_BASE_USER: ${DATA_BASE_USER}
       DATA_BASE_PASS: ${DATA_BASE_PASS}
-
-
+  redis:
+    image : redis
+    container_name : redis
+    build: redisFolder
+    restart : always
+    networks:
+      - my_network
   wordpress :
     image : wordpress 
     container_name: wordpress
     depends_on:
       - maria_db
-    # entrypoint: ["dockerize", "-wait", "tcp://maria_db:3306", "-timeout", "60s"]
     restart: always
     networks:
       - my_network
@@ -28,6 +32,15 @@ services :
       DATA_BASE_USER    : ${DATA_BASE_USER}
       DATA_BASE_PASS    : ${DATA_BASE_PASS}
       WORDPRESS_DB_HOST : maria_db:3306
+      CONF_DB_NAME: ${CONF_DB_NAME}
+      CONF_DB_USER: ${CONF_DB_USER}
+      CONF_DB_HOST: ${CONF_DB_HOST}
+      CONF_DB_PASSWORD: ${CONF_DB_PASSWORD}
+      ADMIN_USER: ${ADMIN_USER}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASS: ${ADMIN_PASS}
+      SITE_TITLE: ${SITE_TITLE}
+      SITE_URL: ${SITE_URL}
     build : wordpressFolder
 
 
