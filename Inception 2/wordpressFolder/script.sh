@@ -10,6 +10,6 @@ sed -i 's/CHPASS/'$CONF_DB_PASSWORD'/' wp-config.php
 sed -i 's/CHHOST/'$CONF_DB_HOST'/' wp-config.php
 
 cd /var/www && wp core install --url=localhost --title=$SITE_TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASS --admin_email=$ADMIN_EMAIL --allow-root
-
 cd /var/www && sudo -u www-data wp plugin install redis-cache --activate
+cd /var/www && sudo -u www-data wp redis enable
 php-fpm7.4 -F
