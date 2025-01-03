@@ -17,11 +17,14 @@ services :
     restart : always
     networks:
       - my_network
+    ports :
+      - "6379:6379"
   wordpress :
     image : wordpress 
     container_name: wordpress
     depends_on:
       - maria_db
+      - redis
     restart: always
     networks:
       - my_network
