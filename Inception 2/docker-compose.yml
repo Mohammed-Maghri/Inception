@@ -1,7 +1,7 @@
 services :
   maria_db:
-    image : mariadbdef
-    build  : mariadbFolder
+    image: mariadbdef
+    build: mariadbFolder
     container_name: mariadb
     restart: always
     networks:
@@ -10,6 +10,7 @@ services :
       DATA_BASE_NAME: ${DATA_BASE_NAME}
       DATA_BASE_USER: ${DATA_BASE_USER}
       DATA_BASE_PASS: ${DATA_BASE_PASS}
+
   redis:
     image : redis
     container_name : redis
@@ -19,13 +20,13 @@ services :
       - my_network
     ports :
       - "6379:6379"
-  wordpress :
+  wordpress:
     image : wordpress 
     container_name: wordpress
     depends_on:
       - maria_db
       - redis
-    restart: always
+    # restart: always
     networks:
       - my_network
     volumes: 
@@ -45,8 +46,6 @@ services :
       SITE_TITLE: ${SITE_TITLE}
       SITE_URL: ${SITE_URL}
     build : wordpressFolder
-
-
   # Add the Network !
   nginx    :
     image  : nginx
@@ -57,13 +56,37 @@ services :
       - my_network
     ports :
       - "443:443"
-      # - "8080:80"
     depends_on :
       - wordpress
     volumes:
+      # - adminer_volume:/etc
       - wordpressda:/var/www
+
+  pass_respon :
+    restart   : always
+    image : pass_resp
+    build : serverPass
+    container_name : serverx
+    networks :
+      - my_network
+    # volumes :
+    #   - adminer_volume:/etc
+    ports :  
+      - "8080:80"
+
+  adminer:
+    image : adminerdef
+    build : adminer
+    container_name : adminer
+    restart : always
+    depends_on :
+      - nginx
+      - maria_db
+
 volumes:
     wordpressda:
+    adminer_volume:
+
 networks:
   my_network:
     driver: bridge
