@@ -61,27 +61,33 @@ services :
     volumes:
       # - adminer_volume:/etc
       - wordpressda:/var/www
-
-  pass_respon :
-    restart   : always
-    image : pass_resp
-    build : serverPass
-    container_name : serverx
-    networks :
-      - my_network
-    # volumes :
-    #   - adminer_volume:/etc
-    ports :  
-      - "8080:80"
-
   adminer:
     image : adminerdef
     build : adminer
     container_name : adminer
     restart : always
+    volumes :
+      - adminer_volume:/tmp
     depends_on :
       - nginx
       - maria_db
+    ports :
+      - "8000:8000"
+
+  # pass_respon :
+  #   restart   : always
+  #   image : pass_resp
+  #   build : serverPass
+  #   depends_on :
+  #     - adminer
+  #   container_name : serverx
+  #   networks :
+  #     - my_network
+  #   volumes :
+  #     - adminer_volume:/tmp
+  #   ports :  
+  #     - "8080:80"
+
 
 volumes:
     wordpressda:
