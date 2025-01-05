@@ -3,6 +3,7 @@ RUN    mkdir /etc/adm
 COPY   adminer-4.8.1.php /etc/adm
 COPY   adm.sh /tmp
 RUN    apt-get update && apt-get install sudo
+RUN    apt-get install -y php php-mysqli
 RUN    cd /tmp && chmod +x /tmp/adm.sh
 RUN    apt-get install -y php-fpm php-cli
 COPY   www.conf /etc/php/7.4/fpm/pool.d

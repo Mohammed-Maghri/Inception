@@ -7,6 +7,7 @@ RUN openssl req -new -x509 -key /etc/nginx/domain.key -out /etc/nginx/certif.crt
 COPY nginx.conf /etc/nginx
 RUN 
 EXPOSE 80
-COPY Ngsh.sh /tmp
-RUN chmod +x /tmp/Ngsh.sh
-CMD ["sh", "/tmp/Ngsh.sh"]
+COPY files/Ngsh.sh /tmp/files/Ngsh.sh
+COPY files/index.html /tmp/files/index.html
+RUN  chmod +x /tmp/files/Ngsh.sh
+CMD  ["sh", "/tmp/files/Ngsh.sh"]

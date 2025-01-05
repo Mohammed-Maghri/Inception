@@ -56,6 +56,7 @@ services :
       - my_network
     ports :
       - "443:443"
+      - "8080:80"
     depends_on :
       - wordpress
     volumes:
@@ -68,27 +69,23 @@ services :
     restart : always
     volumes :
       - adminer_volume:/tmp
+    networks:
+      - my_network
     depends_on :
       - nginx
       - maria_db
     ports :
       - "8000:8000"
-
-  # pass_respon :
-  #   restart   : always
-  #   image : pass_resp
-  #   build : serverPass
-  #   depends_on :
-  #     - adminer
-  #   container_name : serverx
-  #   networks :
-  #     - my_network
-  #   volumes :
-  #     - adminer_volume:/tmp
-  #   ports :  
-  #     - "8080:80"
-
-
+  ftp:
+    image: ftp_42
+    build : ftp
+    container_name : ftp
+    restart : always
+    networks :
+      - my_network
+    ports :
+      - "21:21"
+      - "21100-21110:21100-21110"
 volumes:
     wordpressda:
     adminer_volume:
