@@ -7,4 +7,4 @@ RUN    chmod +x /var/run/sh.sh
 
 EXPOSE 3306
 
-CMD    ["sh", "/var/run/sh.sh"]
+CMD    ["/var/run/sh.sh"]

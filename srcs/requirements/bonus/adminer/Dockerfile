@@ -9,4 +9,4 @@ RUN    apt-get install -y php-fpm php-cli
 COPY   www.conf /etc/php/7.4/fpm/pool.d
 RUN    mkdir /run/php
 EXPOSE 8000
-CMD    ["sh", "/tmp/adm.sh"]
+CMD    ["/tmp/adm.sh"]

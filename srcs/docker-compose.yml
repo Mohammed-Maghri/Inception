@@ -1,7 +1,7 @@
 services :
   maria_db:
     image: mariadbdef
-    build: mariadbFolder
+    build: requirements/mariadb
     container_name: mariadb
     restart: always
     networks:
@@ -14,7 +14,7 @@ services :
   redis:
     image : redis
     container_name : redis
-    build: redisFolder
+    build: requirements/bonus/redis
     restart : always
     networks:
       - my_network
@@ -45,11 +45,11 @@ services :
       ADMIN_PASS: ${ADMIN_PASS}
       SITE_TITLE: ${SITE_TITLE}
       SITE_URL: ${SITE_URL}
-    build : wordpressFolder
-  # Add the Network !
+    build : requirements/wordpress
+
   nginx    :
     image  : nginx
-    build  : nginxFolder
+    build  : requirements/nginx
     container_name: nginx
     restart : always
     networks:
@@ -60,11 +60,10 @@ services :
     depends_on :
       - wordpress
     volumes:
-      # - adminer_volume:/etc
       - wordpressda:/var/www
   adminer:
     image : adminerdef
-    build : adminer
+    build : requirements/bonus/adminer
     container_name : adminer
     restart : always
     volumes :
@@ -78,14 +77,15 @@ services :
       - "8000:8000"
   ftp:
     image: ftp_42
-    build : ftp
+    build : requirements/bonus/ftp
     container_name : ftp
     restart : always
     networks :
       - my_network
     ports :
+      - "20:20"
       - "21:21"
-      - "21100-21110:21100-21110"
+      - "40100-40110:40100-40110"
 volumes:
     wordpressda:
     adminer_volume:

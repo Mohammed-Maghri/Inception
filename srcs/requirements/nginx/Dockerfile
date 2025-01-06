@@ -10,4 +10,4 @@ EXPOSE 80
 COPY files/Ngsh.sh /tmp/files/Ngsh.sh
 COPY files/index.html /tmp/files/index.html
 RUN  chmod +x /tmp/files/Ngsh.sh
-CMD  ["sh", "/tmp/files/Ngsh.sh"]
+CMD  ["/tmp/files/Ngsh.sh"]
