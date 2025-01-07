@@ -43,4 +43,7 @@ These Docker registry features play a vital role in container-based development 
 
 <img width="768" alt="Screen Shot 2025-01-07 at 4 48 44 PM" src="https://github.com/user-attachments/assets/fc967bb7-2797-46b8-b79a-6a6cd0745b1d" />
 
++
++
+
 <img width="792" alt="Screen Shot 2025-01-07 at 11 08 08 AM" src="https://github.com/user-attachments/assets/21fb862b-2800-468e-b585-c0f1a0ec5e19" />
