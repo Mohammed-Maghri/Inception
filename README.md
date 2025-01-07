@@ -5,6 +5,7 @@
 
 <img width="495" alt="Screen Shot 2025-01-07 at 4 43 32 PM" src="https://github.com/user-attachments/assets/0835e150-2fdb-4760-9be7-7d5321e17bf8" />
 
+
 ## The Docker Engine is a core component of Docker and plays a vital role in executing user commands. The main features of the Docker Engine are as follows:
 
 + Client-server architecture : When a user enters a command in Docker, it is transmitted to the Docker daemon (server) through the client and executed. This architecture is similar to the process in which a user issues a command to a computer.
@@ -25,6 +26,7 @@ These components contribute to making Docker efficient and flexible. Thanks to t
 
 ## These features make Docker images much easier and more efficient to deploy and manage applications.
 # 3. Docker Container
+
 <img width="756" alt="Screen Shot 2025-01-07 at 4 51 09 PM" src="https://github.com/user-attachments/assets/31d1f5e2-f8db-439f-92f6-d430cb325085" />
 
 Docker container is an environment that embodies an image and actually runs it. This Activation of an image includes the concept: an image is like a stationary state, but a container makes it a running state. Therefore, a container is what gives life to an image.
