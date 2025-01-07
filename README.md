@@ -1,6 +1,8 @@
 <img width="679" alt="Screen Shot 2025-01-07 at 11 11 42 AM" src="https://github.com/user-attachments/assets/ae4519eb-4a05-4da9-98dd-28ca7c994b98" />
 
-# 1) . Docker Engine 
+```
+# 1) . Docker Engine
+```
 <img width="495" alt="Screen Shot 2025-01-07 at 4 43 32 PM" src="https://github.com/user-attachments/assets/0835e150-2fdb-4760-9be7-7d5321e17bf8" />
 
 The Docker Engine is a core component of Docker and plays a vital role in executing user commands. The main features of the Docker Engine are as follows:
