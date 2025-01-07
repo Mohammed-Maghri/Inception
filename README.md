@@ -34,6 +34,7 @@ In addition, containers independent execution execution provide . Each container
 
 # 4. Docker Registry / Hub (Docker Registry / Hub)
 <img width="765" alt="Screen Shot 2025-01-07 at 4 54 45 PM" src="https://github.com/user-attachments/assets/6ac118b2-e762-4318-9e70-9744cb0cb181" />
+
 A Docker registry is a place to store and share images. It can be thought of as acting similarly to a library.
 + A hub for sharing : The Docker registry safely stores images, provides the ability to retrieve them when needed, and serves as a platform for sharing images with other users.
 + Docker Hub: Docker Hub is a public Docker registry where developers can upload and download images. Many standard images are already stored on Docker Hub , making them easy for users to access and use.
