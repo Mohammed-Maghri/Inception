@@ -82,6 +82,10 @@ services :
     restart : always
     networks :
       - my_network
+    environment :
+      VSFTPD_USER : ${VSFTPD_USER}
+      VSFTPD_PASSWD : ${VSFTPD_PASSWD}
+
     ports :
       - "20:20"
       - "21:21"
