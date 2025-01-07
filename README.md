@@ -2,6 +2,7 @@
 
 # 1) . Docker Engine 
 <img width="495" alt="Screen Shot 2025-01-07 at 4 43 32 PM" src="https://github.com/user-attachments/assets/0835e150-2fdb-4760-9be7-7d5321e17bf8" />
+
 The Docker Engine is a core component of Docker and plays a vital role in executing user commands. The main features of the Docker Engine are as follows:
 
 + Client-server architecture : When a user enters a command in Docker, it is transmitted to the Docker daemon (server) through the client and executed. This architecture is similar to the process in which a user issues a command to a computer.
