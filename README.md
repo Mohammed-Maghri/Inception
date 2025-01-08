@@ -97,4 +97,12 @@ configured) only without nginx.
 + 5) A second volume that contains your WordPress website files.
 + 6) A docker-network that establishes the connection between your containers.
 
-## A Docker container that contains NGINX with TLSv1.2 or TLSv1.3
+## A Docker container that contains NGINX with TLSv1.2 or TLSv1.3 .
+### Before We start We need To Know :
+
++ what is Nginx ?
++ what is the functionality of it ?
++ why Do we need Nginx In this Project ?
+
++ What is (TLSv1.2 or TLSv1.3) ?
++ what is the Diffrence Between (TLSv1.2 or TLSv1.3) ?
