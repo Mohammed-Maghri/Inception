@@ -48,9 +48,6 @@ These Docker registry features play a vital role in container-based development 
 
 +
 +
-# Daigram Of the expected Result For this Project  
-<img width="792" alt="Screen Shot 2025-01-07 at 11 08 08 AM" src="https://github.com/user-attachments/assets/21fb862b-2800-468e-b585-c0f1a0ec5e19" />
-
 # 1. Docker and Namespaces: How Docker Provides Isolation
 
 <img width="707" alt="Screen Shot 2025-01-08 at 10 45 15 AM" src="https://github.com/user-attachments/assets/79346858-8b1c-4ae6-9604-5f48389b34f8" />
@@ -66,5 +63,7 @@ When Docker creates a container, it uses Namespaces to isolate the container’s
 ## e. IPC Isolation with IPC Namespace
 + The IPC (Inter-Process Communication) namespace isolates the system’s inter-process communication mechanisms (e.g., shared memory, semaphores, and message queues).
 
+# Daigram Of the expected Result For this Project  
+<img width="792" alt="Screen Shot 2025-01-07 at 11 08 08 AM" src="https://github.com/user-attachments/assets/21fb862b-2800-468e-b585-c0f1a0ec5e19" />
 
 
