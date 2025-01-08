@@ -86,5 +86,5 @@ Once Docker has isolated the container’s environment using namespaces, it must
 # Daigram Of the expected Result For this Project  
 <img width="792" alt="Screen Shot 2025-01-07 at 11 08 08 AM" src="https://github.com/user-attachments/assets/21fb862b-2800-468e-b585-c0f1a0ec5e19" />
 
-# So we Can Implement the Daigram Below we Will Split Things To Steps So we can Implement Everything Clearly in a Clear Easy WAY > 
+# So we Can Implement the Daigram Below we Will Split Things To Steps So we can Implement Everything in a Clear Easy WAY > 
 
