@@ -1,6 +1,6 @@
 services :
   maria_db:
-    image: mariadbdef
+    image: mariadb_v
     build: requirements/mariadb
     container_name: mariadb
     restart: always
@@ -20,13 +20,13 @@ services :
       - my_network
     ports :
       - "6379:6379"
-  wordpress:
-    image : wordpress 
-    container_name: wordpress
+  wordpress_v:
+    image : wordpress_a 
+    container_name: wordpress_v
     depends_on:
       - maria_db
       - redis
-    # restart: always
+    restart: always
     networks:
       - my_network
     volumes: 
@@ -36,19 +36,22 @@ services :
       DATA_BASE_USER    : ${DATA_BASE_USER}
       DATA_BASE_PASS    : ${DATA_BASE_PASS}
       WORDPRESS_DB_HOST : maria_db:3306
-      CONF_DB_NAME: ${CONF_DB_NAME}
-      CONF_DB_USER: ${CONF_DB_USER}
-      CONF_DB_HOST: ${CONF_DB_HOST}
+      CONF_DB_NAME : ${CONF_DB_NAME}
+      CONF_DB_USER : ${CONF_DB_USER}
+      CONF_DB_HOST : ${CONF_DB_HOST}
       CONF_DB_PASSWORD: ${CONF_DB_PASSWORD}
-      ADMIN_USER: ${ADMIN_USER}
+      ADMIN_USER : ${ADMIN_USER}
       ADMIN_EMAIL: ${ADMIN_EMAIL}
-      ADMIN_PASS: ${ADMIN_PASS}
-      SITE_TITLE: ${SITE_TITLE}
-      SITE_URL: ${SITE_URL}
+      ADMIN_PASS : ${ADMIN_PASS}
+      SITE_TITLE : ${SITE_TITLE}
+      SITE_URL : ${SITE_URL}
+      WP_USER  : ${WP_USER}
+      WP_EMAIL : ${WP_EMAIL}
+      WP_PASSWORD : ${WP_PASSWORD}
     build : requirements/wordpress
 
   nginx    :
-    image  : nginx
+    image  : nginx_v
     build  : requirements/nginx
     container_name: nginx
     restart : always
@@ -58,7 +61,7 @@ services :
       - "443:443"
       - "8080:80"
     depends_on :
-      - wordpress
+      - wordpress_v
     volumes:
       - wordpressda:/var/www
   adminer:
@@ -79,11 +82,11 @@ services :
     image: ftp_42
     build : requirements/bonus/ftp
     container_name : ftp
-    restart : always
+    restart  : always
     networks :
       - my_network
     environment :
-      VSFTPD_USER : ${VSFTPD_USER}
+      VSFTPD_USER   : ${VSFTPD_USER}
       VSFTPD_PASSWD : ${VSFTPD_PASSWD}
 
     ports :
