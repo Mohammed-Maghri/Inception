@@ -97,3 +97,4 @@ configured) only without nginx.
 + 5) A second volume that contains your WordPress website files.
 + 6) A docker-network that establishes the connection between your containers.
 
+## A Docker container that contains NGINX with TLSv1.2 or TLSv1.3
