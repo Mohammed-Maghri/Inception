@@ -56,8 +56,9 @@ When Docker creates a container, it uses Namespaces to isolate the container’s
 
 ## a. Process Isolation with PID Namespace
 + What it does: The PID (Process ID) namespace isolates the process IDs inside the container. This means each container has its own set of process IDs, and processes inside a container can’t see or interact with processes outside the container.
-+ 
+
 + Docker’s Role: When you run a container, Docker sets up a separate PID namespace for that container. Inside the container, the process running in the foreground (such as a web server or database) will have PID 1, just like the init process does on a real Linux system. However, this PID is completely isolated from the host system or other containers.
+  
 + Why it's important: This ensures that containers don’t interfere with each other’s processes and that they appear to have their own independent system processes.
 ## Networking Isolation with Network Namespace
 + The Network namespace isolates network interfaces, IP addresses, routing tables, and firewall rules. This ensures that each container has its own independent network stack.
