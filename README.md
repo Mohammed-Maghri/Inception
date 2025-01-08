@@ -50,3 +50,21 @@ These Docker registry features play a vital role in container-based development 
 +
 # Daigram Of the expected Result For this Project  
 <img width="792" alt="Screen Shot 2025-01-07 at 11 08 08 AM" src="https://github.com/user-attachments/assets/21fb862b-2800-468e-b585-c0f1a0ec5e19" />
+
+# 1. Docker and Namespaces: How Docker Provides Isolation
+
+<img width="707" alt="Screen Shot 2025-01-08 at 10 45 15 AM" src="https://github.com/user-attachments/assets/79346858-8b1c-4ae6-9604-5f48389b34f8" />
+When Docker creates a container, it uses Namespaces to isolate the container’s environment from the host system and other containers. Here's how each type of namespace is used in Docker :
+## a. Process Isolation with PID Namespace
++ What it does: The PID (Process ID) namespace isolates the process IDs inside the container. This means each container has its own set of process IDs, and processes inside a container can’t see or interact with processes outside the container.
++ Docker’s Role: When you run a container, Docker sets up a separate PID namespace for that container. Inside the container, the process running in the foreground (such as a web server or database) will have PID 1, just like the init process does on a real Linux system. However, this PID is completely isolated from the host system or other containers.
++ Why it's important: This ensures that containers don’t interfere with each other’s processes and that they appear to have their own independent system processes.
+## Networking Isolation with Network Namespace
++ The Network namespace isolates network interfaces, IP addresses, routing tables, and firewall rules. This ensures that each container has its own independent network stack.
+## User Isolation with User Namespace
++ The User namespace allows containers to have their own user and group ID mappings. It ensures that a process inside a container can run as root (user ID 0) within the container, but the host system might assign it a different user ID for security purposes.
+## e. IPC Isolation with IPC Namespace
++ The IPC (Inter-Process Communication) namespace isolates the system’s inter-process communication mechanisms (e.g., shared memory, semaphores, and message queues).
+
+
+
