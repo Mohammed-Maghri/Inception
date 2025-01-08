@@ -2,9 +2,12 @@
 # ----------------------------------------------------- INCEPTION ------------------------------------------------
 ```
 <img width="679" alt="Screen Shot 2025-01-07 at 11 11 42 AM" src="https://github.com/user-attachments/assets/ae4519eb-4a05-4da9-98dd-28ca7c994b98" />
+# What is Docker ?
+Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker's methodologies for shipping, testing, and deploying code, you can significantly reduce the delay between writing code and running it in production.
 
+# Architecture of Docker
 
-# 1). Docker Engine
+## 1). Docker Engine
 
 <img width="495" alt="Screen Shot 2025-01-07 at 4 43 32 PM" src="https://github.com/user-attachments/assets/0835e150-2fdb-4760-9be7-7d5321e17bf8" />
 
