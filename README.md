@@ -67,6 +67,18 @@ When Docker creates a container, it uses Namespaces to isolate the container’s
 ## e. IPC Isolation with IPC Namespace
 + The IPC (Inter-Process Communication) namespace isolates the system’s inter-process communication mechanisms (e.g., shared memory, semaphores, and message queues).
 
+# 2. Docker and Cgroups: How Docker Manages Resources
+<img width="255" alt="Screen Shot 2025-01-08 at 10 53 58 AM" src="https://github.com/user-attachments/assets/4d9284a2-6f7a-4ce7-af5e-520be3ad4dd6" />
+
+Once Docker has isolated the container’s environment using namespaces, it must manage how the container uses system resources. This is where Cgroups (Control Groups) come in. Cgroups allow Docker to allocate and limit CPU, memory, and other resources that containers can use, ensuring fair distribution and preventing one container from using all available resources.
+
+## a. Resource Limiting with Cgroups
++ Cgroups allow you to control and limit the resources (such as CPU, memory, and disk I/O) that a container can use. Each container is assigned to its own cgroup, which restricts the amount of CPU and memory it can consume.
+## b. CPU Management with Cgroups
++ Cgroups can limit how much CPU a container can use. You can set CPU limits based on percentage usage or CPU shares (relative weight between containers).
+## d. Block I/O Management with Cgroups
++ Cgroups can limit how much disk I/O (reading and writing data) a container can perform, ensuring that containers do not hog the disk resources.
+
 # Daigram Of the expected Result For this Project  
 <img width="792" alt="Screen Shot 2025-01-07 at 11 08 08 AM" src="https://github.com/user-attachments/assets/21fb862b-2800-468e-b585-c0f1a0ec5e19" />
 
