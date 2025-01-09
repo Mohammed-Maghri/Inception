@@ -1,5 +1,5 @@
-services :
-  maria_db:
+services:
+  maria_db :
     image: mariadb_v
     build: requirements/mariadb
     container_name: mariadb
@@ -10,6 +10,8 @@ services :
       DATA_BASE_NAME: ${DATA_BASE_NAME}
       DATA_BASE_USER: ${DATA_BASE_USER}
       DATA_BASE_PASS: ${DATA_BASE_PASS}
+    volumes:
+      - mariadb_v:/var/lib/mysql
 
   redis:
     image : redis
@@ -95,7 +97,28 @@ services :
       - "40100-40110:40100-40110"
 volumes:
     wordpressda:
+      name: wordpressda
+      driver : 'local'
+      driver_opts:
+        type : 'none'
+        o: 'bind'
+        device: /home/$USER/data/wordpress
+
     adminer_volume:
+      name: adminer_volume
+      driver : 'local'
+      driver_opts:
+        type : 'none'
+        o: 'bind'
+        device: /home/$USER/data/adminer
+    
+    mariadb_v :
+      name: mariadb_v
+      driver : 'local'
+      driver_opts:
+        type : 'none'
+        o: 'bind'
+        device: /home/$USER/data/mariadb
 
 networks:
   my_network:
