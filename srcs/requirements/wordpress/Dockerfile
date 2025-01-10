@@ -4,10 +4,10 @@ RUN    apt-get install -y iputils-ping
 RUN    sudo apt-get install -y php
 RUN    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN    sudo apt install php-mysqli
-RUN    mkdir -p /var/www
+RUN    mkdir -p /var/www/html
 RUN    chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp 
-RUN    sudo chown -R www-data:www-data /var/www
-RUN    cd /var/www && sudo -u www-data wp core download --path=/var/www
+RUN    sudo chown -R www-data:www-data /var/www/html
+RUN    cd /var/www/html && sudo -u www-data wp core download --path=/var/www/html
 RUN    apt-get install -y php-fpm php-cli 
 RUN    apt-get install systemctl -y
 COPY   www.conf /etc/php/7.4/fpm/pool.d

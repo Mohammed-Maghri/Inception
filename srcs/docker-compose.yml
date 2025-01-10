@@ -1,6 +1,27 @@
 services:
-  maria_db :
-    image: mariadb_v
+  portainer_v42:
+    image : portainer_v42:42 
+    build : requirements/bonus/portainer/portainer
+    container_name : portainer
+    restart : always 
+    ports : 
+      - "9443:9443"
+    volumes : 
+      - /var/run/docker.sock:/var/run/docker.sock 
+    networks : 
+      - "my_network"
+    
+  static_site_v42 :
+    image : static_site_v42:42
+    build : requirements/bonus/files
+    container_name : site
+    restart: always
+    networks :
+      - my_network
+    ports :
+      - "7000:7000"
+  mariadb_v42 :
+    image: mariadb_v42:42
     build: requirements/mariadb
     container_name: mariadb
     restart: always
@@ -13,8 +34,8 @@ services:
     volumes:
       - mariadb_v:/var/lib/mysql
 
-  redis:
-    image : redis
+  redis_v42:
+    image : redis_v42:42
     container_name : redis
     build: requirements/bonus/redis
     restart : always
@@ -22,17 +43,17 @@ services:
       - my_network
     ports :
       - "6379:6379"
-  wordpress_v:
-    image : wordpress_a 
-    container_name: wordpress_v
+  wordpress_v42:
+    image : wordpress_v42:42
+    container_name: wordpress
     depends_on:
-      - maria_db
-      - redis
+      - mariadb_v42
+      - redis_v42
     restart: always
     networks:
       - my_network
     volumes: 
-      - wordpressda:/var/www
+      - wordpressda:/var/www/html
     environment :
       DATA_BASE_NAME    : ${DATA_BASE_NAME}
       DATA_BASE_USER    : ${DATA_BASE_USER}
@@ -52,8 +73,8 @@ services:
       WP_PASSWORD : ${WP_PASSWORD}
     build : requirements/wordpress
 
-  nginx    :
-    image  : nginx_v
+  nginx_v42    :
+    image  : nginx_v42:42
     build  : requirements/nginx
     container_name: nginx
     restart : always
@@ -63,11 +84,11 @@ services:
       - "443:443"
       - "8080:80"
     depends_on :
-      - wordpress_v
+      - wordpress_v42
     volumes:
-      - wordpressda:/var/www
-  adminer:
-    image : adminerdef
+      - wordpressda:/var/www/html
+  adminer_v42:
+    image : adminer_v42:42
     build : requirements/bonus/adminer
     container_name : adminer
     restart : always
@@ -76,12 +97,12 @@ services:
     networks:
       - my_network
     depends_on :
-      - nginx
-      - maria_db
+      - nginx_v42
+      - mariadb_v42
     ports :
       - "8000:8000"
-  ftp:
-    image: ftp_42
+  ftp_v42:
+    image: ftp_v42:42
     build : requirements/bonus/ftp
     container_name : ftp
     restart  : always
@@ -123,7 +144,6 @@ volumes:
 networks:
   my_network:
     driver: bridge
- 
 # version: Specifies the Docker Compose file format version.
 # services: Defines the containers (services) of the application.
 # image: The Docker image to use for the container.
